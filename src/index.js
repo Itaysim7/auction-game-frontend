@@ -2,11 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Det from './Forms';
+import Desc from './Static-pages';
+import Sq from './summary-quiz/Summary-quiz';
+import Survey from './survey/Survey';
 import reportWebVitals from './reportWebVitals';
+import { Route, BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Route exact path="/" component={App}/>
+      <Route exact path="/description" component={Desc}/>
+      <Route exact path="/forms" component={Det}/>
+      <Route exact path="/survey" component={Survey}/>
+      <Route exact path="/summary-quiz" component={Sq}/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

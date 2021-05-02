@@ -1,0 +1,35 @@
+.container-survey{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    margin-bottom: 30px;
+}
+.layout{
+    display: flex;
+    text-align: left;
+    width: 550px;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgb(110,94,254)0%, rgba(73,63,252,1)100%);
+    border-radius: 20px;
+}
+
+.fill-in{
+    width: 540px;
+    background: white;
+    align-items: left;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.button-container
+{
+    margin-top: 5px;
+    margin-right: 47%;
+    margin-bottom: 30px;
+}
+
+.survey-radio input{
+    height: 1em;
+    width: auto;
+    margin-left: 10px;
+}

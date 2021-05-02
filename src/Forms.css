@@ -1,0 +1,46 @@
+.container-forms{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+    margin-bottom: 30px;
+}
+.layout{
+    display: flex;
+    text-align: center;
+    width: 550px;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgb(110,94,254)0%, rgba(73,63,252,1)100%);
+    border-radius: 20px;
+}
+.fill-in{
+    width: 540px;
+    background: white;
+    align-items: center;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+form{
+    margin-bottom: 10px;
+}
+select{
+    width: 300px;
+    margin-left: 10px;
+    height: 30px;
+    text-align-last:center;
+}
+input{
+    width: 300px;
+    height: 30px;
+    text-align-last:center;
+}
+.button-container
+{
+    margin-top: 5px;
+    margin-right: 47%;
+}
+h6{
+    margin-left: 10px;
+}
+.age{
+    margin-left: 10px;
+}
