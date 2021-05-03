@@ -13,7 +13,14 @@ function Results(props)
   }
   const ret = () => {
     setIsreview(false)
-  }  
+  }
+  
+  const nextClicked = () => {
+    window.location.href = '/';
+  }
+  const tryAgainClicked = () => {
+    window.location.href = '/summary-quiz';
+  }
 
   if(isreview)
   {
@@ -31,9 +38,24 @@ function Results(props)
         <h4>Passing score: 7/{QuizData.length}</h4>
         <hr/> 
         <h1>Result:</h1>
-        {props.score >= 7 && <h3 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h3>}
-        {props.score < 7 && <h3 style={{color : 'red', marginBottom : '30px'}}>Failed</h3>}
-        <Button onClick={review} variant="secondary" size="lg" >Review Quiz</Button>
+        {props.score === 10 && 
+          <div>
+              <h3 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h3>
+              <Button onClick={nextClicked} variant="secondary" size="lg" >Next</Button>
+          </div>
+        }
+        {props.score < 7 &&
+          <div>
+              <h3 style={{color : 'red', marginBottom : '30px'}}>Failed</h3>
+              <Button onClick={tryAgainClicked} variant="secondary" size="lg" >Try again</Button>
+          </div>
+        }
+        {props.score > 6 && props.score <10 &&
+          <div>
+              <h3 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h3>
+              <Button onClick={review} variant="secondary" size="lg" >Review Quiz</Button>
+          </div>
+        }
       </div>
     </div>
     )

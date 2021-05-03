@@ -10,7 +10,8 @@ import './Summary-quiz.css';
 function SQAns(props) {
 
   const ret = () => {
-    props.ret()
+    {/* props.ret() */}
+    window.location.href = '/survey';
   }  
  
     return (
@@ -27,7 +28,7 @@ function SQAns(props) {
                     </p>   
                 )}
             </p>)}
-          <Button onClick={ret} variant="secondary" size="lg" >Return</Button>
+          <Button style={{ marginBottom : '30px'}} onClick={ret} variant="secondary" size="lg" >Next</Button>
       </div>
     </div>    
     );

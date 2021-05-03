@@ -89,12 +89,11 @@ export class Sq extends Component
     const {question, options, currentIndex, userAnswer, quizEnd, score, answers} = this.state;
 
     if(quizEnd)
-      {
-        return(
-          <Results score={score} answers={answers}/>
+    {
+      return(
+        <Results score={score} answers={answers}/>
       )
-      }    
-
+    }
     return(
       <div className="color">
         <div className="que-con" >

@@ -17,7 +17,7 @@ function Det()
 
     const continueClicked = () => 
     {
-        window.location.href = '/';
+        window.location.href = '/description';
     }
 
   return (
