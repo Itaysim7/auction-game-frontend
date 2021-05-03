@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/auction-game-frontend/static/css/main.5c0543f6.chunk.css",
+    "main.js": "/auction-game-frontend/static/js/main.66cf3886.chunk.js",
+    "main.js.map": "/auction-game-frontend/static/js/main.66cf3886.chunk.js.map",
+    "runtime-main.js": "/auction-game-frontend/static/js/runtime-main.71349159.js",
+    "runtime-main.js.map": "/auction-game-frontend/static/js/runtime-main.71349159.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/auction-game-frontend/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.247c58f5.chunk.js": "/auction-game-frontend/static/js/2.247c58f5.chunk.js",
+    "static/js/2.247c58f5.chunk.js.map": "/auction-game-frontend/static/js/2.247c58f5.chunk.js.map",
+    "static/js/3.ddd3d4a7.chunk.js": "/auction-game-frontend/static/js/3.ddd3d4a7.chunk.js",
+    "static/js/3.ddd3d4a7.chunk.js.map": "/auction-game-frontend/static/js/3.ddd3d4a7.chunk.js.map",
+    "index.html": "/auction-game-frontend/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/auction-game-frontend/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.5c0543f6.chunk.css.map": "/auction-game-frontend/static/css/main.5c0543f6.chunk.css.map",
+    "static/js/2.247c58f5.chunk.js.LICENSE.txt": "/auction-game-frontend/static/js/2.247c58f5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.71349159.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.247c58f5.chunk.js",
+    "static/css/main.5c0543f6.chunk.css",
+    "static/js/main.66cf3886.chunk.js"
+  ]
+}
