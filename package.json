@@ -30,6 +30,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "https://apiauctiongame.herokuapp.com/",
   "browserslist": {
     "production": [
       ">0.2%",
