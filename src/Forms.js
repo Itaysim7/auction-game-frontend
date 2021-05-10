@@ -1,57 +1,85 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect} from 'react'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import './Forms.css';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { API } from './api-service';
 
 
 function Det()
  {
-    const [value, setValue] = useState('')
-    const options = useMemo(() => countryList().getData(), [])
+    const [participantId, setParticipantId] = useState(0)
+    const [value_nat, setValue_nat] = useState('')
+    const [value_gender, setValue_gender] = useState('')
+    const [value_edu, setValue_edu] = useState('')
+    const [value_age, setValue_age] = useState('')
+    
+    useEffect(() =>
+     {
+        if(participantId !== 0)
+            window.location.href = `/summary-quiz/${participantId}`;
+    }, [participantId])
 
-    const changeHandler = value => {
-      setValue(value)
+    const options = useMemo(() => countryList().getData(), [])
+    const options_gender = [{ value: "Male", label: "Male" },{ value: "Female", label: "Female" }];
+    const options_edu = [{ value: "Some High School", label: "Some High School" },{ value: "High School", label: "High School" },
+    { value: "Bachelor's Degree", label: "Bachelor's Degree" },{ value: "Master's Degree", label: "Master's Degree" },
+    { value: "Ph.D. or higher", label: "Ph.D. or higher" }];
+
+    const changeHandlerNat = value => {
+        setValue_nat(value)
+    }
+    const changeHandlerGender = e => {
+        setValue_gender(e.value)
+    }
+    const changeHandlerEdu = e => {
+        setValue_edu(e.value)
+    }
+    const changeHandlerAge = e => {
+        setValue_age(e.target.value)
     }
 
     const continueClicked = () => 
     {
-        window.location.href = '/description';
+        if(value_age === '' || value_edu === '' || value_gender === ''|| value_nat === '' )
+            alert("You need to fill in all the fields")
+        else
+        {
+            API.addParticipant({age: value_age, gender: value_gender,
+                 nationality: value_nat.value, education: value_edu })
+            .then(resp => setParticipantId(resp))
+            .catch(error => console.log(error))
+        }
     }
 
   return (
     <div>
         <div className='container-forms'>
             <div className='layout'>
-                <h3>Please fill in a few details before we start</h3>
+                <h3 style={{marginLeft: '8px'}}>Please fill in a few details before we start</h3>
                 <div className='fill-in'>
                     <h6>Age</h6>
                     <form >
-                        <input className="age" type="number"  min="18" max="100" placeholder="-Please enter your age-"/>
+                        <input className="age" type="number"  min="18" max="100"
+                        value={value_age} onChange={changeHandlerAge} placeholder="-Please enter your age-"/>
                     </form>
                     <h6>Gender</h6>
-                    <form >
-                        <select id="gender" name="gender">
-                            <option value>-Please select your gender-</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                    <form style={{width : '300px', marginLeft : '10px'}}>
+                        <Select options={options_gender} onChange={changeHandlerGender}
+                        placeholder="-Please select your gender-" value={options_gender.filter(function(option) {
+                            return option.value === value_gender;})} />
                     </form>
                     <h6>Education</h6>
-                    <form >
-                        <select id="education" name="education">
-                            <option value="error">-Please select your education-</option>
-                            <option value="Some High School">Some High School</option>
-                            <option value="High School">High School</option>
-                            <option value="Bachelor's Degree">Bachelor's Degree</option>
-                            <option value="Master's Degree">Master's Degree</option>
-                            <option value="Ph.D. or higher">Ph.D. or higher</option>
-                        </select>
+                    <form style={{width : '300px', marginLeft : '10px'}}>
+                        <Select options={options_edu} onChange={changeHandlerEdu}
+                        placeholder="-Please select your education-" value={options_edu.filter(function(option) {
+                            return option.value === value_edu;})} />
                     </form>
                     <h6>Nationality</h6>
                     <form style={{width : '300px', marginLeft : '10px'}}>
-                        <Select placeholder="-Please select your Nationality-" options={options} value={value} onChange={changeHandler} />
+                        <Select placeholder="-Please select your Nationality-" options={options} value={value_nat}
+                         onChange={changeHandlerNat} />
                     </form>
                 </div>
             </div>

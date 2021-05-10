@@ -4,7 +4,7 @@
     background-color: orange;
 }
 .color {
-    min-height: 100vh;
+    height: 600px;
     background-color: rgb(76, 99, 201);
     font-family: Verdana;
     font-size: 18px;
@@ -61,8 +61,13 @@ h1{
 color: black;
 }
 .timer {
-    margin-left: 43%;
-    margin-right: 42.5%;
+    margin-left: 3%;
+    margin-right: 53%;
     border-radius: 50%;
     background-color: rgb(71, 223, 71);
+}
+.intro-header
+{
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
 }

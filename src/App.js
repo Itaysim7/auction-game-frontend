@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const nextClicked = () => {
-    window.location.href = '/forms';
+    window.location.href = '/description';
   }
 
 

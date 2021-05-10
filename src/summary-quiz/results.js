@@ -16,22 +16,22 @@ function Results(props)
   }
   
   const nextClicked = () => {
-    window.location.href = '/';
+    window.location.href = `/intro-training/${props.id}`;
   }
   const tryAgainClicked = () => {
-    window.location.href = '/summary-quiz';
+    window.location.href =  `/summary-quiz/${props.id}`;
   }
 
   if(isreview)
   {
     return (
-      <SQAns answers={props.answers} ret={ret}/>
+      <SQAns id={props.id} answers={props.answers} ret={ret}/>
     )
   }
   else 
   { 
     return(
-    <div className="color">
+    <div className="color" style={{backgroundColor: 'rgb(76, 99, 201)'}}>
       <div className="result">
         <h1>pass mark</h1>
         <h4>Your score: {props.score}/{QuizData.length}</h4>
@@ -40,19 +40,25 @@ function Results(props)
         <h1>Result:</h1>
         {props.score === 10 && 
           <div>
-              <h3 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h3>
-              <Button onClick={nextClicked} variant="secondary" size="lg" >Next</Button>
+              <h2 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h2>
+              <Button onClick={review} variant="secondary" size="lg" >Review Quiz</Button>
+              <Button style={{float : 'right'}} onClick={nextClicked} variant="secondary" size="lg" >Next</Button>
           </div>
         }
-        {props.score < 7 &&
+        {props.score < 7 && props.round &&
           <div>
-              <h3 style={{color : 'red', marginBottom : '30px'}}>Failed</h3>
+              <h2 style={{color : 'red', marginBottom : '30px'}}>Failed</h2>
               <Button onClick={tryAgainClicked} variant="secondary" size="lg" >Try again</Button>
+          </div>
+        }
+        {props.score < 7 && !props.round &&
+          <div>
+              <h2 style={{color : 'red', marginBottom : '30px'}}>Failed, you don't have another attemp</h2>
           </div>
         }
         {props.score > 6 && props.score <10 &&
           <div>
-              <h3 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h3>
+              <h2 style={{color : 'green', marginBottom : '30px'}}>Congratulations, you passed</h2>
               <Button onClick={review} variant="secondary" size="lg" >Review Quiz</Button>
           </div>
         }

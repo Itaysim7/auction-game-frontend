@@ -5,7 +5,24 @@ import {QuizData} from './sq-data'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import Results from './results';
+import { API } from "./../api-service";
 
+var time = null
+
+const renderTime = ({ remainingTime,elapsedTime }) => {
+  time = elapsedTime
+  if (remainingTime === 0) {
+    return <div className="timer">Too late...</div>;
+  }
+
+  return (
+    <div>
+      <div className="text">Remaining</div>
+      <h1 className="value">{remainingTime}</h1>
+      <div className="text">seconds</div>
+    </div>
+  );
+};
  
 
 export class Sq extends Component
@@ -15,12 +32,17 @@ export class Sq extends Component
     super(props)
     this.state = {
       userAnswer: null, userAnswerId: null , currentIndex: 0, options:[], score: 0, disabled: true, 
-      answers: [], quizEnd: false
+      answers: [], quizEnd: false,  isParticipant: false, round:true
     }
   }
 
+
+
   loadQuiz = () => 
   {
+    API.isParticipant({id: Number(this.props.match.params.id)})
+    .then(resp => this.setState({isParticipant: resp}))
+    .catch(error => console.log(error))
     const {currentIndex} = this.state;
     this.setState(() => {
       return{
@@ -33,7 +55,7 @@ export class Sq extends Component
 
   nextQuestionHandler = () => 
   {
-    const {userAnswer, answer, score, answers, userAnswerId} = this.state;
+    const {userAnswer, answer, score, userAnswerId} = this.state;
     if(userAnswer === answer)
       this.setState({score: score+1}) 
     this.state.answers.push(userAnswerId)
@@ -76,34 +98,50 @@ export class Sq extends Component
     const {userAnswer, answer, score, userAnswerId} = this.state;
     this.state.answers.push(userAnswerId)
     if(userAnswer === answer)
+    {
       this.setState({score: score+1}) 
+      API.updateScore({id: Number(this.props.match.params.id), score: score+1, time: time })
+      .then(resp => {this.setState({round: resp})
+    console.log(resp)})
+      .catch(error => console.log(error))
+    }
+    else{
+      API.updateScore({id: Number(this.props.match.params.id), score: score, time: time})
+      .then(resp => this.setState({round: resp}))
+      .catch(error => console.log(error))
+    }
     this.setState({quizEnd: true})
   } 
-  review = () => {
-    window.location.href = '/review-quiz';
-} 
+ 
 
 
   render ()
   {
-    const {question, options, currentIndex, userAnswer, quizEnd, score, answers} = this.state;
+    const {question,round, options, currentIndex, userAnswer, quizEnd, score, answers, isParticipant} = this.state;
 
+    if( !isParticipant)
+      return (<h1>error</h1>)
     if(quizEnd)
     {
       return(
-        <Results score={score} answers={answers}/>
+        <Results score={score} round={round} answers={answers} id={this.props.match.params.id}/>
       )
     }
     return(
-      <div className="color">
+      <div className="color" style={{backgroundColor: 'rgb(76, 99, 201)'}}>
         <div className="que-con" >
-          <div className="timer">
-            <CountdownCircleTimer isPlaying duration={900} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
-              {({ remainingTime }) => remainingTime}
-            </CountdownCircleTimer>
+          <div className="intro-header">
+            <div className="timer">
+              <CountdownCircleTimer isPlaying duration={900} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+                {renderTime}
+              </CountdownCircleTimer>
+            </div>
+            <h2  style={{marginTop: '100px', color: 'red'}}>{`Question ${currentIndex + 1} of ${QuizData.length}`}</h2>
           </div>
-          <h2>{question}</h2>
-          <span>{`Question ${currentIndex + 1} of ${QuizData.length}`}</span>
+          
+          {currentIndex+1 === 6 && <h2 style={{color: 'black'}}>What value will the bidder bid, if you decide <b>not to</b> purchase any information from the information provider?</h2>}
+          {currentIndex+1 === 7 && <h2 style={{color: 'black'}}>What  value will the buyers offer, if you <b>do decide</b> to purchase the information regarding the true worth of the auctioned item from the information provider?</h2>}
+          {currentIndex+1 !== 6 && currentIndex+1 !== 7 && <h2 style={{color: 'black'}}>{question}</h2>}
           {
             options.map((option, index) => 
               <p key={index} className={`options ${userAnswer === option? "selected" : null}`}

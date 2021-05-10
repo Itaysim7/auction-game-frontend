@@ -4,18 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {QuizData} from './sq-data'
 import './Summary-quiz.css';
 
- 
-
 
 function SQAns(props) {
 
   const ret = () => {
-    {/* props.ret() */}
-    window.location.href = '/survey';
+    window.location.href = `/intro-training/${props.id}`;
   }  
  
     return (
-    <div className="color">
+    <div className="color" style={{backgroundColor: 'rgb(76, 99, 201)', height:'3900px'}}>
       <div className="que-con">
           {QuizData.map(ques =>
             <p key={ques.id}>
