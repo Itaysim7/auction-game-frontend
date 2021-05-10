@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        <h1>1</h1>
         <img className="photo" src={process.env.PUBLIC_URL + './1.png'} alt="logo" />
         <Button className="button-container"  variant="outline-primary" size="lg"
           onClick={nextClicked} >Next</Button>
