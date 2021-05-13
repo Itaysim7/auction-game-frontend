@@ -1,12 +1,10 @@
 const BASE_URL= "https://apiauctiongame.herokuapp.com/";
 
-
 export class API {
 
     static addParticipant(body)
     {
-        return fetch(BASE_URL+"api/participant/add_participant/",
-        {
+        return fetch("https://apiauctiongame.herokuapp.com/api/participant/add_participant/",        {
             method: 'POST',
             headers: 
             {
