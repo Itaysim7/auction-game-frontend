@@ -19,7 +19,6 @@ function App() {
       API.addParticipant({id: worker})
       .then(resp => console.log(resp))
       .catch(error => console.log(error))
-      window.location.href = `/description/${worker}`;
     }
     else
       alert("Please enter your Worker ID to continue")
