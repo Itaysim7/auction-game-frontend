@@ -24,7 +24,6 @@ function App() {
       .then(resp => console.log(resp))
       .catch(error => console.log(error))
       await sleep(500);
-      console.log("Waited 5s");
        window.location.href = `/description/${worker}`;
     }
     else

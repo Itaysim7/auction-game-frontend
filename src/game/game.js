@@ -39,22 +39,24 @@ export class Game extends Component
   }
   
 
-  yesClicked = () =>
+  yesClicked = async () =>
   {
     const {questionId, currentIndex, points, zv} = this.state;
     API.postAnswerGame({'id': this.props.match.params.id, 'score':points,'zv':zv, 'yes_no':true,
                   'round': currentIndex, 'question':questionId, 'time':time})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
+    await new Promise(resolve => setTimeout(resolve, 500));
     window.location.href = `/game-yes/${this.props.match.params.id}/${questionId}`;
   }
-  noClicked = () =>
+  noClicked = async () =>
   {
     const {questionId, currentIndex} = this.state;
     API.postAnswerGame({'id': this.props.match.params.id, 'score':0, 'zv':0, 'yes_no':false,
                   'round': currentIndex, 'question':questionId, 'time':time})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
+    await new Promise(resolve => setTimeout(resolve, 500));
     window.location.href = `/game-no/${this.props.match.params.id}/${questionId}`;
   }
 
@@ -113,7 +115,7 @@ export class Game extends Component
                 <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
                 <h2 style={{color : 'red'}}>Round {currentIndex}/20</h2>
                 <ProgressBar labelSize="10px" bgColor="blue"   completed={Math.floor(currentIndex/20*100)} />;
-                <img className="img-training" src={process.env.PUBLIC_URL + '/img.png'} alt="logo" />
+                <img className="img-training" src={process.env.PUBLIC_URL + '/Img.png'} alt="logo" />
               </div>
               <div>
                 <h5 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
@@ -127,6 +129,11 @@ export class Game extends Component
           <div className="training-body">
 
             <div className="bidders">
+                { w === 4  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/4bidders.png`} alt="logo" />}
+                { w === 5  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/5bidders.png`} alt="logo" />}
+                { w === 6  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/6bidders.png`} alt="logo" />}
+                { w === 7  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/7bidders.png`} alt="logo" />}
+                { w === 8  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/8bidders.png`} alt="logo" />}
                 <img className="img-bidders" src={process.env.PUBLIC_URL + `/${w}bidders.png`} alt="logo" />
                 <h2 style={{color : 'black'}}>number of bidders= {w}</h2>
             </div>
