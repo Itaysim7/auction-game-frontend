@@ -36,7 +36,7 @@ export class Trainig extends Component
     }
   }
 
-  yesClicked  = async () =>
+  yesClicked = async () =>
   {
     const {questionId, currentIndex, points, zv} = this.state;
     API.postAnswer({'id': this.props.match.params.id, 'score':points,'zv':zv, 'yes_no':true,

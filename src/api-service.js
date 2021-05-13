@@ -191,7 +191,7 @@ export class API {
     }
     static get_game(body)
     {
-        return fetch("http://127.0.0.1:8000/api/entry/get_another_game_ent/",
+        return fetch(BASE_URL+"api/entry/get_another_game_ent/",
         {
             method: 'POST',
             headers: 
