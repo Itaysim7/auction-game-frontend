@@ -23,10 +23,10 @@ export class No extends Component
 
   loadData = () => 
   {
-    API.passInstructions({id: Number(this.props.match.params.id)})
+    API.passInstructions({id: this.props.match.params.id})
     .then(resp => this.setState({isParticipant: resp}))
     .catch(error => console.log(error))
-    API.TrainingRound({id: Number(this.props.match.params.id)})
+    API.TrainingRound({id: this.props.match.params.id})
     .then(resp => this.setState({currentIndex: resp-1}))
     .catch(error => console.log(error))
     API.get_No({question: Number(this.props.match.params.question)})
@@ -67,7 +67,7 @@ export class No extends Component
       t2c, t2s, t3c, t3s, t4c, t4s, t5c, t5s,} = this.state;
 
     if( !isParticipant)
-        return (<h1>error</h1>)
+        return (<h1>Time is up, you can not continue the survey</h1>)
 
     return(
       <div className="color">
@@ -91,7 +91,7 @@ export class No extends Component
           <div className="yes-body">
             <div></div>
             <div>
-              <img className="img-bidders-yes" src={process.env.PUBLIC_URL + '/bidders.png'} alt="logo" />
+              <img className="img-bidders-yes" src={process.env.PUBLIC_URL + `/${w}bidders.png`} alt="logo" />
               <h4 style={{color : 'black'}}>number of bidders= {w}</h4>
             </div>
             <div>

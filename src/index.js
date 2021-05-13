@@ -23,8 +23,8 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Route exact path="/" component={App}/>
-      <Route exact path="/description" component={Desc}/>
-      <Route exact path="/forms" component={Det}/>
+      <Route exact path="/description/:id" component={Desc}/>
+      <Route exact path="/forms/:id" component={Det}/>
       <Route exact path="/survey/:id" component={Survey}/>
       <Route exact path="/summary-quiz/:id" component={Sq}/>
       <Route exact path="/training/:id/" component={Trainig}/>

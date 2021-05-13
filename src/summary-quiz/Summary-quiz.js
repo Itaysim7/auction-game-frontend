@@ -8,12 +8,17 @@ import Results from './results';
 import { API } from "./../api-service";
 
 var time = null
+var timeRemain = null
+var partid = 1;
 
 const renderTime = ({ remainingTime,elapsedTime }) => {
   time = elapsedTime
+  timeRemain = remainingTime
   if (remainingTime === 0) {
-    return <div className="timer">Too late...</div>;
-  }
+    API.setTimeOut({id: partid})
+    .then(resp => console.log(resp))
+    .catch(error => console.log(error))
+    }
 
   return (
     <div>
@@ -32,7 +37,7 @@ export class Sq extends Component
     super(props)
     this.state = {
       userAnswer: null, userAnswerId: null , currentIndex: 0, options:[], score: 0, disabled: true, 
-      answers: [], quizEnd: false,  isParticipant: false, round:true
+      answers: [], quizEnd: false,  isParticipant: false, round:true, remaining: 900
     }
   }
 
@@ -40,8 +45,16 @@ export class Sq extends Component
 
   loadQuiz = () => 
   {
-    API.isParticipant({id: Number(this.props.match.params.id)})
-    .then(resp => this.setState({isParticipant: resp}))
+    partid=this.props.match.params.id;
+    API.load_quiz({id: this.props.match.params.id})
+    .then(resp => { 
+      if(resp !== false)
+      {
+        this.setState({isParticipant: true, remaining: resp})
+
+      }
+
+    })
     .catch(error => console.log(error))
     const {currentIndex} = this.state;
     this.setState(() => {
@@ -92,6 +105,9 @@ export class Sq extends Component
           answer: QuizData[currentIndex].answer,
         }
       })
+      API.openQuiz({id: this.props.match.params.id, time:timeRemain})
+      .then(resp => console.log(resp))
+      .catch(error => console.log(error))
     }
   }
   finishHandler = () => {
@@ -100,13 +116,13 @@ export class Sq extends Component
     if(userAnswer === answer)
     {
       this.setState({score: score+1}) 
-      API.updateScore({id: Number(this.props.match.params.id), score: score+1, time: time })
+      API.updateScore({id: this.props.match.params.id, score: score+1, time: time })
       .then(resp => {this.setState({round: resp})
-    console.log(resp)})
+      console.log(resp)})
       .catch(error => console.log(error))
     }
     else{
-      API.updateScore({id: Number(this.props.match.params.id), score: score, time: time})
+      API.updateScore({id: this.props.match.params.id, score: score, time: time})
       .then(resp => this.setState({round: resp}))
       .catch(error => console.log(error))
     }
@@ -117,7 +133,7 @@ export class Sq extends Component
 
   render ()
   {
-    const {question,round, options, currentIndex, userAnswer, quizEnd, score, answers, isParticipant} = this.state;
+    const {question,round, options, remaining, currentIndex, userAnswer, quizEnd, score, answers, isParticipant} = this.state;
 
     if( !isParticipant)
       return (<h1>error</h1>)
@@ -132,7 +148,7 @@ export class Sq extends Component
         <div className="que-con" >
           <div className="intro-header">
             <div className="timer">
-              <CountdownCircleTimer isPlaying duration={900} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+              <CountdownCircleTimer isPlaying duration={remaining} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
               </CountdownCircleTimer>
             </div>

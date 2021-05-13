@@ -11,14 +11,16 @@ export class gameSummary extends Component
   {
     super(props)
     this.state = {
-        round:1
+      round:1, bonus:0
     }
   }
 
   loadData = () => 
   {
-    API.TrainingRoundGame({id: Number(this.props.match.params.id)})
-    .then(resp => this.setState({round: resp}))
+    API.getGameSummary({id: this.props.match.params.id})
+    .then(resp => {
+      this.setState({round: resp.round, bonus:resp.bonus})
+    })
     .catch(error => console.log(error))
   }
 
@@ -32,7 +34,7 @@ export class gameSummary extends Component
 
   render ()
   {
-    const {round} = this.state;
+    const {round, bonus} = this.state;
 
     return(
         <div className="color">
@@ -40,13 +42,17 @@ export class gameSummary extends Component
             <h1 style= {{color:"red"}}>Game-summary</h1>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px',marginTop:'50px'}}> Rounds: {round-1}</h2>
-
+            <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Your point: {bonus*10}</h2>
+            <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Bonus: {bonus}$</h2>
+         
             <h2 style={{color : 'white', backgroundColor: 'green', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px',marginTop:'75px'}}>
                   Press "Continue" in order to get your bonus</h2>
 
             <Button className="button-container"  variant="outline-primary" size="lg"
-                onClick={this.nextClicked} >Next</Button>
+                onClick={this.nextClicked} >Continue</Button>
           </div>
         </div>
         )

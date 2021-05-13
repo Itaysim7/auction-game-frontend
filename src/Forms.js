@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { API } from './api-service';
 
 
-function Det()
+function Det(props)
  {
-    const [participantId, setParticipantId] = useState(0)
+    const [participantId, setParticipantId] = useState('')
     const [value_nat, setValue_nat] = useState('')
     const [value_gender, setValue_gender] = useState('')
     const [value_edu, setValue_edu] = useState('')
@@ -17,7 +17,7 @@ function Det()
     
     useEffect(() =>
      {
-        if(participantId !== 0)
+        if(participantId !== '')
             window.location.href = `/summary-quiz/${participantId}`;
     }, [participantId])
 
@@ -46,7 +46,7 @@ function Det()
             alert("You need to fill in all the fields")
         else
         {
-            API.addParticipant({age: value_age, gender: value_gender,
+            API.filedsParticipant({id: props.match.params.id, age: value_age, gender: value_gender,
                  nationality: value_nat.value, education: value_edu })
             .then(resp => setParticipantId(resp))
             .catch(error => console.log(error))

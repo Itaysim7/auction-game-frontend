@@ -11,7 +11,7 @@ function Desc(props)
 
     const nextClicked = () => {
         if(page>=18)
-            window.location.href = '/forms';
+            window.location.href = `/forms/${props.match.params.id}`;
         else
             setPage(page+1);
     }
