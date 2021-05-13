@@ -23,7 +23,7 @@ function App() {
       API.addParticipant({id: worker})
       .then(resp => console.log(resp))
       .catch(error => console.log(error))
-      await sleep(5000);
+      await sleep(500);
       console.log("Waited 5s");
        window.location.href = `/description/${worker}`;
     }
