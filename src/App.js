@@ -13,12 +13,18 @@ function App() {
     setWorkert(event.target.value)
   }
 
-  const nextClicked = () => {
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const nextClicked = async () => {
     if(worker !== '')
     {
       API.addParticipant({id: worker})
       .then(resp => console.log(resp))
       .catch(error => console.log(error))
+      await sleep(5000);
+      console.log("Waited 5s");
        window.location.href = `/description/${worker}`;
     }
     else
