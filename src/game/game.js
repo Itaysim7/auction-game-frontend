@@ -134,7 +134,6 @@ export class Game extends Component
                 { w === 6  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/6bidders.png`} alt="logo" />}
                 { w === 7  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/7bidders.png`} alt="logo" />}
                 { w === 8  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/8bidders.png`} alt="logo" />}
-                <img className="img-bidders" src={process.env.PUBLIC_URL + `/${w}bidders.png`} alt="logo" />
                 <h2 style={{color : 'black'}}>number of bidders= {w}</h2>
             </div>
             <Matrix size={40} x={x} y={y} table={table} />
