@@ -4,7 +4,8 @@ export class API {
 
     static addParticipant(body)
     {
-        return fetch("https://apiauctiongame.herokuapp.com/api/participant/add_participant/",        {
+        return fetch(BASE_URL+"api/participant/add_participant/",
+        {
             method: 'POST',
             headers: 
             {
