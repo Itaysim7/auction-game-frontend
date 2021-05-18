@@ -121,9 +121,9 @@ export class Game extends Component
                 <h5 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                  paddingBottom:'5px', paddingTop:'5px',marginTop:'20px'}}> Rounds:{currentIndex} </h5>
                 <h5 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-                 paddingBottom:'5px', paddingTop:'5px',marginTop:'10px'}}> Your point:{(bonus*10).toFixed(2)}</h5>
+                 paddingBottom:'5px', paddingTop:'5px',marginTop:'10px'}}> Your points:{(bonus*10).toFixed(2)}</h5>
                 <h5 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-                 paddingBottom:'5px', paddingTop:'5px',marginTop:'10px'}}> Bonus:{bonus}$ </h5>
+                 paddingBottom:'5px', paddingTop:'5px',marginTop:'10px'}}> Bonus:{bonus}¢ </h5>
               </div>
           </div>
           <div className="training-body">
@@ -139,7 +139,7 @@ export class Game extends Component
             <Matrix size={40} x={x} y={y} table={table} />
             <div className="bidders">
                 <img className="img-info" src={process.env.PUBLIC_URL + '/info.png'} alt="logo" />
-                <h4 style={{color : 'black'}}>will reveal the true value <br/> in exchange for− {zv}</h4>
+                <h4 style={{color : 'black'}}>will reveal the true value <br/> in exchange for− {zv}$</h4>
             </div>
 
           </div>

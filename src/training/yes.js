@@ -118,18 +118,20 @@ export class Yes extends Component
               <h4 style={{color : 'black'}}>fee= {zv}$</h4>
             </div>
             <div>
-              <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px'}}>
-                 Prize collected: {Number(soldFor)}-{parseFloat(avg).toFixed(1)}-{zv}=
-                 {(Number(soldFor)-parseFloat(avg).toFixed(1)-zv).toFixed(1)}$</h4>
-              <div className="sold-for">
-                <h1 style={{color : 'red'}}>sold for {parseFloat(avg).toFixed(1)}$</h1>
-                <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
-              </div>
               <div className="avg">
                 <img className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
                 <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
               </div>
+              <div className="sold-for">
+                <h1 style={{color : 'red'}}>sold for {parseFloat(soldFor).toFixed(1)}$</h1>
+                <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
+              </div>
+              <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+               paddingBottom:'15px', paddingTop:'15px'}}>
+                 Prize collected: {Number(soldFor)}-{parseFloat(avg).toFixed(1)}-{zv}=
+                 {(Number(soldFor)-parseFloat(avg).toFixed(1)-zv).toFixed(1)}$</h4>
+
+
             </div>
             <div style={{marginTop: '120px'}}>
               <Button width="20px" className="button-container"  variant="outline-primary" size="lg"

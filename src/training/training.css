@@ -9,9 +9,8 @@
     margin-top: 20px;
   }
 .training-timer {
-    margin-left: 1%;
-    margin-right: 52%;
-    margin-bottom: 22%;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background-color: rgb(71, 223, 71);
 }

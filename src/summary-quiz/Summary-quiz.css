@@ -61,8 +61,8 @@ h1{
 color: black;
 }
 .timer {
-    margin-left: 3%;
-    margin-right: 53%;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background-color: rgb(71, 223, 71);
 }

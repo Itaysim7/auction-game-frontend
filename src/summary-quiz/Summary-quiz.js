@@ -148,7 +148,7 @@ export class Sq extends Component
         <div className="que-con" >
           <div className="intro-header">
             <div className="timer">
-              <CountdownCircleTimer isPlaying duration={remaining} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+              <CountdownCircleTimer style={{backgroundColor: 'green'}}  isPlaying duration={remaining} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
               </CountdownCircleTimer>
             </div>

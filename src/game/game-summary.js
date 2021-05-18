@@ -43,9 +43,9 @@ export class gameSummary extends Component
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px',marginTop:'50px'}}> Rounds: {round-1}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Your point: {bonus*10}</h2>
+               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Your points: {bonus*10}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Bonus: {bonus}$</h2>
+               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Bonus: {bonus}¢</h2>
          
             <h2 style={{color : 'white', backgroundColor: 'green', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px',marginTop:'75px'}}>
