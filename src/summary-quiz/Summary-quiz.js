@@ -37,7 +37,7 @@ export class Sq extends Component
     super(props)
     this.state = {
       userAnswer: null, userAnswerId: null , currentIndex: 0, options:[], score: 0, disabled: true, 
-      answers: [], quizEnd: false,  isParticipant: false, round:true, remaining: 900
+      answers: [], quizEnd: false,  isParticipant: true, round:true, remaining: 900
     }
   }
 
@@ -51,7 +51,10 @@ export class Sq extends Component
       if(resp !== false)
       {
         this.setState({isParticipant: true, remaining: resp})
-
+      }
+      else
+      {
+        this.setState({isParticipant: false})
       }
 
     })
@@ -136,7 +139,10 @@ export class Sq extends Component
     const {question,round, options, remaining, currentIndex, userAnswer, quizEnd, score, answers, isParticipant} = this.state;
 
     if( !isParticipant)
-      return (<h1>error</h1>)
+    {
+      setTimeout(() => window.location.href = `/`, 10000);
+      return (<h1 style={{margin: '20%'}}>You can no longer participate in the experiment, window will close in 5 seconds</h1>)
+    }
     if(quizEnd)
     {
       return(

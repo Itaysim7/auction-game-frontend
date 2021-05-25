@@ -21,10 +21,14 @@ function App() {
     if(worker !== '')
     {
       API.addParticipant({id: worker})
-      .then(resp => console.log(resp))
+      .then(resp => {
+        if(resp === 'You can no longer participate in the experiment')
+          alert(resp)
+        else
+          window.location.href = `/description/${worker}`;
+      })
       .catch(error => console.log(error))
       await sleep(500);
-       window.location.href = `/description/${worker}`;
     }
     else
       alert("Please enter your Worker ID to continue")

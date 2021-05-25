@@ -12,7 +12,7 @@ export class No extends Component
   {
     super(props)
     this.state = {
-        isParticipant: false, currentIndex: 1, question: {}, 
+        isParticipant: true, currentIndex: 1, question: {}, 
         x: 1 , y: 1, table:[1], avg:1,
         t1c: 0, t2c: 0, t3c:0, t4c:0, t5c:0, t1s: 0, t2s: 0, t3s:0, t4s:0, t5s:0,
     }
@@ -63,11 +63,13 @@ export class No extends Component
 
   render ()
   {
-    const {isParticipant, x, y, w, table, currentIndex, avg, t1c, t1s,
-      t2c, t2s, t3c, t3s, t4c, t4s, t5c, t5s,} = this.state;
+    const {isParticipant, x, y, w, table, currentIndex, avg} = this.state;
 
     if( !isParticipant)
-        return (<h1>Time is up, you can not continue the survey</h1>)
+    {
+      setTimeout(() => window.location.href = `/`, 10000);
+      return (<h1 style={{margin: '20%'}}>You can no longer participate in the experiment, window will close in 5 seconds</h1>)
+    }
 
     return(
       <div className="color">
@@ -78,34 +80,30 @@ export class No extends Component
               </div>
               <div>
                 <h1 style={{color : 'red'}}>Training</h1>
-                <h2 style={{color : 'red'}}>Round {currentIndex}-summary</h2>
+                <h2 style={{color : 'red'}}>Round {currentIndex+1}-summary</h2>
                 <img  src={process.env.PUBLIC_URL + '/decided-no.png'} alt="logo" />
-                <div className="world">
-                    <div></div>
-                    <img className="img-training" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
-                    <h1 style={{color : 'red', marginTop: '25px'}}>?</h1>
-                </div>
               </div>
               <Matrix size={10} x={x} y={y} table={table} />
           </div>
           <div className="yes-body">
-            <div></div>
             <div>
               <img className="img-bidders-yes" src={process.env.PUBLIC_URL + `/${w}bidders.png`} alt="logo" />
               <h4 style={{color : 'black'}}>number of bidders= {w}</h4>
             </div>
             <div>
-              {t1c > 1 && <h1 style={{color : 'red'}}>t1 {"=>"} {t1c} bidders {"=>"} {t1c} bids for {parseFloat(t1s).toFixed(1)}$ </h1>}
-              {t1c === 1 && <h1 style={{color : 'red'}}>t1 {"=>"} {t1c} bidder {"=>"} {t1c} bid for {parseFloat(t1s).toFixed(1)}$ </h1>}
-              {t2c > 1 && <h1 style={{color : 'red'}}>t2 {"=>"} {t2c} bidders {"=>"} {t2c} bids for {parseFloat(t2s).toFixed(1)}$ </h1>}
-              {t2c === 1 && <h1 style={{color : 'red'}}>t2 {"=>"} {t2c} bidder {"=>"} {t2c} bid for {parseFloat(t2s).toFixed(1)}$ </h1>}
-              {t3c > 1 && <h1 style={{color : 'red'}}>t3 {"=>"} {t3c} bidders {"=>"} {t3c} bids for {parseFloat(t3s).toFixed(1)}$ </h1>}
-              {t3c === 1 && <h1 style={{color : 'red'}}>t3 {"=>"} {t3c} bidder {"=>"} {t3c} bid for {parseFloat(t3s).toFixed(1)}$ </h1>}
-              {t4c > 1 && <h1 style={{color : 'red'}}>t4 {"=>"} {t4c} bidders {"=>"} {t4c} bids for {parseFloat(t4s).toFixed(1)}$ </h1>}
-              {t4c === 1 && <h1 style={{color : 'red'}}>t4 {"=>"} {t4c} bidder {"=>"} {t4c} bid for {parseFloat(t4s).toFixed(1)}$ </h1>}
-              {t5c > 1 && <h1 style={{color : 'red'}}>t5 {"=>"} {t5c} bidders {"=>"} {t5c} bids for {parseFloat(t5s).toFixed(1)}$ </h1>}
-              {t5c === 1 && <h1 style={{color : 'red'}}>t5 {"=>"} {t5c} bidder {"=>"} {t5c} bid for {parseFloat(t5s).toFixed(1)}$ </h1>}
-
+              <div className="world" style={{marginLeft:'150px'}}>
+                  <img className="img-training" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
+                  <h1 style={{color : 'red', marginTop: '25px'}}>?</h1>
+                  <div></div>
+              </div>
+              <div className="sold-for">
+                <h1 style={{color : 'red', marginTop:'30px'}}>sold for {parseFloat(avg).toFixed(1)}$ !</h1>
+                <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
+              </div>
+              <div className="avg">
+                  <img className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
+                  <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
+              </div>
             </div>
 
           </div>
@@ -116,31 +114,18 @@ export class No extends Component
               <h4 style={{color : 'black'}}>fee= 0$</h4>
             </div>
             <div>
-            <div className="avg">
-                <img className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
-                <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
-              </div>
-              <div className="sold-for">
-                <h1 style={{color : 'red'}}>sold for {parseFloat(avg).toFixed(1)}$</h1>
-                <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
-              </div>
               <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px'}}>
                  Prize collected: {parseFloat(avg).toFixed(1)}-{parseFloat(avg).toFixed(1)}-0=0$</h4>
-
             </div>
-            <div style={{marginTop: '120px'}}>
-              <Button width="20px" className="button-container"  variant="outline-primary" size="lg"
+          </div>
+          <div className="buttons-container">
+              <Button style={{marginBottom:'25px'}} width="20px" className="next"  variant="outline-primary" size="lg"
               onClick={this.nextClicked} >Next</Button>
-              { currentIndex > 1 && <Button width="20px" className="button-container"  variant="outline-primary" size="lg"
+              { currentIndex > 0 && <Button width="20px" className="previous"  variant="outline-primary" size="lg"
               onClick={this.endClicked} >End training</Button>
               }
-            </div>
-
           </div>
-
-
-       
         </div>
       </div>
 

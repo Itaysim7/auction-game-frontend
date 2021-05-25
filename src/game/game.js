@@ -33,7 +33,7 @@ export class Game extends Component
   {
     super(props)
     this.state = {
-        isParticipant: false, currentIndex: 1, questionId: 1,  bonus:0,
+        isParticipant: true, currentIndex: 1, questionId: 1,  bonus:0,
         x:1 , y:1, w:1, zv:1, table : [-1], isButtonDisabled: true, points: 0
     }
   }
@@ -43,7 +43,7 @@ export class Game extends Component
   {
     const {questionId, currentIndex, points, zv} = this.state;
     API.postAnswerGame({'id': this.props.match.params.id, 'score':points,'zv':zv, 'yes_no':true,
-                  'round': currentIndex, 'question':questionId, 'time':time})
+                  'round': currentIndex+1, 'question':questionId, 'time':time})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -53,7 +53,7 @@ export class Game extends Component
   {
     const {questionId, currentIndex} = this.state;
     API.postAnswerGame({'id': this.props.match.params.id, 'score':0, 'zv':0, 'yes_no':false,
-                  'round': currentIndex, 'question':questionId, 'time':time})
+                  'round': currentIndex+1, 'question':questionId, 'time':time})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -100,7 +100,10 @@ export class Game extends Component
     const {isParticipant, x, y, w, zv, table, currentIndex, isButtonDisabled, bonus} = this.state;
 
     if( !isParticipant)
-        return (<h1>Time is up, you can not continue the survey</h1>)
+    {
+      setTimeout(() => window.location.href = `/`, 10000);
+      return (<h1 style={{margin: '20%'}}>You can no longer participate in the experiment, window will close in 5 seconds</h1>)
+    }
 
     return(
       <div className="color">
@@ -113,7 +116,7 @@ export class Game extends Component
               </div>
               <div>
                 <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
-                <h2 style={{color : 'red'}}>Round {currentIndex}/20</h2>
+                <h2 style={{color : 'red'}}>Round {currentIndex+1}/20</h2>
                 <ProgressBar labelSize="10px" bgColor="blue"   completed={Math.floor(currentIndex/20*100)} />;
                 <img className="img-training" src={process.env.PUBLIC_URL + '/Img.png'} alt="logo" />
               </div>
@@ -139,12 +142,12 @@ export class Game extends Component
             <Matrix size={40} x={x} y={y} table={table} />
             <div className="bidders">
                 <img className="img-info" src={process.env.PUBLIC_URL + '/info.png'} alt="logo" />
-                <h4 style={{color : 'black'}}>will reveal the true value <br/> in exchange for− {zv}$</h4>
+                <h5 style={{color : 'black'}}>true value revealing price− {zv}$</h5>
             </div>
 
           </div>
           <div className='yes-no'>
-                <h4>Purchase the true value from the information broker?</h4>
+                <h4>Are you interested buying the information from the<br/> information provider?</h4>
                 <div className='yes-no-buttons'>
                         <div ></div>
                         <Button style={{margin : '10px'}}  variant="outline-primary" size="lg"

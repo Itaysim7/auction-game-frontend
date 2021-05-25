@@ -41,7 +41,7 @@ export class trainingSummary extends Component
           <div className="result" style= {{width:"50%", marginLeft:"25%"}}>
             <h1 style= {{color:"red"}}>Training-summary</h1>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'50px'}}> Rounds: {round-1}</h2>
+               paddingBottom:'15px', paddingTop:'15px',marginTop:'50px'}}> Rounds: {round}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Your points: {(bonus*10).toFixed(2)}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',

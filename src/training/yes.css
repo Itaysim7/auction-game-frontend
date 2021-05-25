@@ -7,13 +7,13 @@
 
   .yes-body{
     display: grid;
-    grid-template-columns: 1fr 7fr 15fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 20px;
   }
 
   .yes-foot{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-gap: 20px;
   }
 
@@ -23,12 +23,13 @@
 }
 
 .img-dolar{
-  width: 75px;
-  height: 75px;
+  width: 125px;
+  height: 125px;
 }
 .img-avg{
-  width: 105px;
-  height: 75px;
+  width: 125px;
+  height: 100px;
+  margin-left: 120px;
 }
 .img-info-yes{
   width: 200px;

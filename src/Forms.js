@@ -10,7 +10,7 @@ import { API } from './api-service';
 function Det(props)
  {
     const [participantId, setParticipantId] = useState('')
-    const [value_nat, setValue_nat] = useState('')
+    const [value_nat, setValue_nat] = useState({value: "US", label: "United States"})
     const [value_gender, setValue_gender] = useState('')
     const [value_edu, setValue_edu] = useState('')
     const [value_age, setValue_age] = useState('')
@@ -28,6 +28,7 @@ function Det(props)
     { value: "Ph.D. or higher", label: "Ph.D. or higher" }];
 
     const changeHandlerNat = value => {
+        console.log(value)
         setValue_nat(value)
     }
     const changeHandlerGender = e => {
