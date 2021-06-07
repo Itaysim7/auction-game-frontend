@@ -21,6 +21,9 @@ function Results(props)
   const tryAgainClicked = () => {
     window.location.href =  `/summary-quiz/${props.id}`;
   }
+  const timeout = () => {
+    setTimeout(() => window.location.href = `/`, 17000);
+  }
 
   if(isreview)
   {
@@ -53,7 +56,9 @@ function Results(props)
         }
         {props.score < 7 && !props.round &&
           <div>
-              <h2 style={{color : 'red', marginBottom : '30px'}}>Failed, you don't have another attemp</h2>
+              <h2 style={{color : 'red', marginBottom : '30px'}}>Failed, you don't have another attemp <br/>
+              You can no longer participate in the experiment, window will close in 10 seconds</h2>
+              {timeout()}
           </div>
         }
         {props.score > 6 && props.score <10 &&

@@ -16,6 +16,7 @@ const renderTime = ({ remainingTime,elapsedTime }) => {
     API.setTimeOut({id: partid})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
+    window.location.href = `/err`
     }
 
   return (

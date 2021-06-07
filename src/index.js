@@ -18,11 +18,13 @@ import IntroGame from './game/intro-game';
 import Game from './game/game';
 import GameNo from './game/game-no';
 import GameYes from './game/game-yes';
+import Err from './err'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Route exact path="/" component={App}/>
+      <Route exact path="/err" component={Err}/>
       <Route exact path="/description/:id" component={Desc}/>
       <Route exact path="/forms/:id" component={Det}/>
       <Route exact path="/survey/:id" component={Survey}/>

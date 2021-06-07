@@ -14,6 +14,7 @@ const renderTime = ({ remainingTime,elapsedTime }) => {
     API.setTimeOut({id: partid})
     .then(resp => console.log(resp))
     .catch(error => console.log(error))
+    window.location.href = `/err`
   }
 
   return (
@@ -99,7 +100,7 @@ export class Trainig extends Component
         <div className="que-con" >
           <div className="training-header">
               <div className="training-timer">
-                <CountdownCircleTimer isPlaying duration={360} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+                <CountdownCircleTimer isPlaying duration={10} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
                 </CountdownCircleTimer>
               </div>
