@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { API } from "./../api-service";
 import Matrix from './../Matrix';
+import { Alert } from 'reactstrap';
 
 var time = null
 var partid = 1;
@@ -32,7 +33,7 @@ export class Trainig extends Component
   {
     super(props)
     this.state = {
-      isParticipant: true, currentIndex: 1, questionId: 1, bonus:0,
+      isParticipant: true, currentIndex: 1, questionId: 1, bonus:0, visible : false,
       x:1 , y:1, w:1, zv:1, table : [-1], isButtonDisabled: true, points: 0
     }
   }
@@ -77,8 +78,12 @@ export class Trainig extends Component
             this.setState({points: temp_points, currentIndex: resp.round, bonus:resp.bonus, x: resp.x, y:resp.y, w:resp.w, zv:temp_zv, table: tempTable, questionId: resp.id})  
           })
     .catch(error => console.log(error))
-
-    setTimeout(() => alert("3 minutes passed"), 180000);
+    setTimeout(() => this.setState({ isButtonDisabled: false }), 10000);
+    setTimeout(() => {this.setState({visible:true},()=>{
+      window.setTimeout(()=>{
+        this.setState({visible:false})
+      },180000)
+    });},180000);
 
   }
 
@@ -88,7 +93,7 @@ export class Trainig extends Component
 
   render ()
   {
-    const {isParticipant, x, y, w, zv, table, currentIndex, bonus} = this.state;
+    const {isParticipant, x, y, w, zv, table, currentIndex, bonus, isButtonDisabled} = this.state;
 
     if( !isParticipant)
     {
@@ -107,6 +112,9 @@ export class Trainig extends Component
               <div>
                 <h1 style={{color : 'red'}}>Training</h1>
                 <h2 style={{color : 'red'}}>Round {currentIndex+1}</h2>
+                <Alert color="info" isOpen={this.state.visible} >
+                     3 minutes passed !!!
+                </Alert>
                 <img className="img-training" src={process.env.PUBLIC_URL + '/Img.png'} alt="logo" />
               </div>
               <div>
@@ -140,9 +148,9 @@ export class Trainig extends Component
                 <div className='yes-no-buttons'>
                         <div ></div>
                         <Button style={{margin : '10px'}}  variant="outline-primary" size="lg"
-                        onClick={this.yesClicked}     >Yes</Button>
+                        disabled={isButtonDisabled} onClick={this.yesClicked} >Yes</Button>
                         <Button style={{margin : '10px'}} variant="outline-primary" size="lg"
-                        onClick={this.noClicked}  >No</Button>
+                        disabled={isButtonDisabled} onClick={this.noClicked} >No</Button>
                 </div>
             </div>
 

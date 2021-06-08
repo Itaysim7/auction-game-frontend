@@ -6,6 +6,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { API } from "./../api-service";
 import Matrix from './../Matrix';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Alert } from 'reactstrap';
 
 var time = null
 var partid = 1;
@@ -34,7 +35,7 @@ export class Game extends Component
   {
     super(props)
     this.state = {
-        isParticipant: true, currentIndex: 1, questionId: 1,  bonus:0,
+        isParticipant: true, currentIndex: 1, questionId: 1,  bonus:0, visible : false,
         x:1 , y:1, w:1, zv:1, table : [-1], isButtonDisabled: true, points: 0
     }
   }
@@ -88,7 +89,11 @@ export class Game extends Component
   })
     .catch(error => console.log(error))
     setTimeout(() => this.setState({ isButtonDisabled: false }), 10000);
-    setTimeout(() => alert("3 minutes passed"), 180000);
+    setTimeout(() => {this.setState({visible:true},()=>{
+      window.setTimeout(()=>{
+        this.setState({visible:false})
+      },180000)
+    });},180000);
 
   }
 
@@ -118,7 +123,10 @@ export class Game extends Component
               <div>
                 <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
                 <h2 style={{color : 'red'}}>Round {currentIndex+1}/20</h2>
-                <ProgressBar labelSize="10px" bgColor="blue"   completed={Math.floor(currentIndex/20*100)} />;
+                <ProgressBar height="30px" labelSize="18px" bgColor="blue" completed={Math.floor(currentIndex/20*100)} />;
+                <Alert color="info" isOpen={this.state.visible} >
+                     3 minutes passed !!!
+                </Alert>
                 <img className="img-training" src={process.env.PUBLIC_URL + '/Img.png'} alt="logo" />
               </div>
               <div>
