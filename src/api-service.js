@@ -1,5 +1,5 @@
-// const BASE_URL= "https://apiauctiongame.herokuapp.com/";
-const BASE_URL= "http://127.0.0.1:8000/";
+const BASE_URL= "https://db-auction-game.herokuapp.com/";
+// const BASE_URL= "http://127.0.0.1:8000/";
 
 export class API {
 

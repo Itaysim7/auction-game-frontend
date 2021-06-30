@@ -32,7 +32,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://apiauctiongame.herokuapp.com/",
+  "homepage": "https://db-auction-game.herokuapp.com/",
   "browserslist": {
     "production": [
       ">0.2%",
