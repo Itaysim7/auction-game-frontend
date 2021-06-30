@@ -123,7 +123,7 @@ export class Game extends Component
               <div>
                 <h3 style={{color : 'black',marginBottom:'0px'}}>The Mysterious Auction Game</h3>
                 <h4 style={{color : 'red', marginTop:'0px'}}>Round {currentIndex+1}/20</h4>
-                <ProgressBar height="20px" labelSize="18px" bgColor="blue" completed={Math.floor((currentIndex+1)/20*100)} />;
+                <ProgressBar labelAlignment="oucetside" height="20px" labelSize="18px" bgColor="blue" completed={Math.floor((currentIndex+1)/20*100)} />;
                 <Alert color="info" isOpen={this.state.visible} >
                      3 minutes passed !!!
                 </Alert>
