@@ -1,15 +1,36 @@
 .App {
   text-align: center;
 }
+.container-intro{
+  align-items: center;
+  height: 80vh;
+}
+.layout-intro{
+  display: flex;
+    text-align: left;
+    width: 30%;
+    margin-left: 35%;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgb(110,94,254)0%, rgba(73,63,252,1)100%);
+    border-radius: 20px;
+}
+.fill-in-intro {
+  width: 98%;
+  margin-left: 1%;
+  background: white;
+  align-items: left;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
 .photo {
   margin-top: 30px;
-  height: 500px;
+  height: 55vh;
 }
  
 .button-container
 {
-  margin-top: 550px;
-  float: right;  
+  float: right;
+  height: 7vh;  
 }
 body {
   background-color: white !important;

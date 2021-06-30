@@ -37,16 +37,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
+      <div className="container-intro">
         <img className="photo" src={process.env.PUBLIC_URL + './1.png'} alt="logo" />
-        <div className='layout' style={{marginLeft: '300px', marginBottom:'20px'}}>
-                <h3 style={{marginLeft: '8px'}}>Please enter your Worker ID to continue</h3>
-                <div className='fill-in' >
-                    <form >
-                    <textarea onChange={setQ4.bind(this)} style={{ marginLeft: '25%',marginTop:'10px', marginBottom: '1px'}} id="story" name="story" rows="1" cols="33"></textarea>
+        <div className='layout-intro'>
+          <h3 style={{marginLeft: '8px'}}>Please enter your Worker ID to continue</h3>
+            <div className='fill-in-intro' >
+              <form >
+                <textarea onChange={setQ4.bind(this)} style={{ marginLeft: '25%',marginTop:'10px', marginBottom: '1px'}} id="story" name="story" rows="1" cols="25"></textarea>
                     </form>
-                </div>
             </div>
+        </div>
         <Button className="button-container"  variant="outline-primary" size="lg"
           onClick={nextClicked} >Next</Button>
       </div>

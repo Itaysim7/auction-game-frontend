@@ -155,16 +155,19 @@ export class Sq extends Component
         <div className="que-con" >
           <div className="intro-header">
             <div className="timer">
-              <CountdownCircleTimer style={{backgroundColor: 'green'}}  isPlaying duration={remaining} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+              <CountdownCircleTimer size='150' style={{backgroundColor: 'green'}}  isPlaying duration={remaining} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
               </CountdownCircleTimer>
             </div>
-            <h2  style={{marginTop: '100px', color: 'red'}}>{`Question ${currentIndex + 1} of ${QuizData.length}`}</h2>
-          </div>
-          
-          {currentIndex+1 === 6 && <h2 style={{color: 'black'}}>What value will the bidder bid, if you decide <b>not to</b> purchase any information from the information provider?</h2>}
+            <div>
+              <h2  style={{marginTop: '2%', color: 'red'}}>{`Question ${currentIndex + 1} of ${QuizData.length}`}</h2>
+              {currentIndex+1 === 6 && <h2 style={{color: 'black'}}>What value will the bidder bid, if you decide <b>not to</b> purchase any information from the information provider?</h2>}
           {currentIndex+1 === 7 && <h2 style={{color: 'black'}}>What  value will the buyers offer, if you <b>do decide</b> to purchase the information regarding the true worth of the auctioned item from the information provider?</h2>}
           {currentIndex+1 !== 6 && currentIndex+1 !== 7 && <h2 style={{color: 'black'}}>{question}</h2>}
+            </div>
+          </div>
+          
+
           {
             options.map((option, index) => 
               <p key={index} className={`options ${userAnswer === option? "selected" : null}`}

@@ -107,7 +107,7 @@ export class Game extends Component
 
     if( !isParticipant)
     {
-      setTimeout(() => window.location.href = `/`, 10000);
+      setTimeout(() => window.location.href = `/`, 12000);
       return (<h1 style={{margin: '20%'}}>You can no longer participate in the experiment, window will close in 5 seconds</h1>)
     }
 
@@ -116,14 +116,14 @@ export class Game extends Component
         <div className="que-con" >
           <div className="training-header">
               <div className="training-timer">
-                <CountdownCircleTimer isPlaying duration={360} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+                <CountdownCircleTimer size="150" isPlaying duration={360} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
                 </CountdownCircleTimer>
               </div>
               <div>
-                <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
-                <h2 style={{color : 'red'}}>Round {currentIndex+1}/20</h2>
-                <ProgressBar height="30px" labelSize="18px" bgColor="blue" completed={Math.floor(currentIndex/20*100)} />;
+                <h3 style={{color : 'black',marginBottom:'0px'}}>The Mysterious Auction Game</h3>
+                <h4 style={{color : 'red', marginTop:'0px'}}>Round {currentIndex+1}/20</h4>
+                <ProgressBar height="20px" labelSize="18px" bgColor="blue" completed={Math.floor((currentIndex+1)/20*100)} />;
                 <Alert color="info" isOpen={this.state.visible} >
                      3 minutes passed !!!
                 </Alert>
@@ -146,9 +146,9 @@ export class Game extends Component
                 { w === 6  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/6bidders.png`} alt="logo" />}
                 { w === 7  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/7bidders.png`} alt="logo" />}
                 { w === 8  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/8bidders.png`} alt="logo" />}
-                <h2 style={{color : 'black'}}>number of bidders= {w}</h2>
+                <h4 style={{color : 'black'}}>number of bidders= {w}</h4>
             </div>
-            <Matrix size={40} x={x} y={y} table={table} />
+            <Matrix size={30} x={x} y={y} table={table} />
             <div className="bidders">
                 <img className="img-info" src={process.env.PUBLIC_URL + '/info.png'} alt="logo" />
                 <h5 style={{color : 'black'}}>true value revealing price− {zv}$</h5>
@@ -156,7 +156,7 @@ export class Game extends Component
 
           </div>
           <div className='yes-no'>
-                <h4>Are you interested buying the information from the<br/> information provider?</h4>
+                <h4 style={{marginTop:'0px',marginBottom:'0px'}}>Are you interested buying the information from the<br/> information provider?</h4>
                 <div className='yes-no-buttons'>
                         <div ></div>
                         <Button style={{margin : '10px'}}  variant="outline-primary" size="lg"

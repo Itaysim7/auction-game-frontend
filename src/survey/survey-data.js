@@ -22,6 +22,13 @@ export const SurveyData = [
                   `Genreally happy`,
                   `Very happy`],
     },
+    {
+        id: 3,
+        question: `What guided you in your choice of whether to purchase the information or not?`,
+        options: [`I calculated all possible scenarios and chose to buy the information only when I thought it will benefit me.`,
+                  `In some of the rounds I used mathematical calculations and in others I simply guessed what to do.`,
+                  `I guessed during the entire game`],
+    },
 ]
 
 

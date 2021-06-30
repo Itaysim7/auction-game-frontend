@@ -38,17 +38,17 @@ export class gameSummary extends Component
 
     return(
         <div className="color">
-          <div className="result" style= {{width:"50%", marginLeft:"25%"}}>
+          <div className="result" style= {{width:"60%", marginLeft:"20%"}}>
             <h1 style= {{color:"red"}}>Game-summary</h1>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'50px'}}> Rounds: {round}</h2>
+               paddingBottom:'3%', paddingTop:'3%',marginTop:'2%'}}> Rounds: {round}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Your points: {bonus*10}</h2>
+               paddingBottom:'3%', paddingTop:'3%',marginTop:'2%'}}> Your points: {(bonus*10).toFixed(2)}</h2>
             <h2 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'20px'}}> Bonus: {bonus}¢</h2>
+               paddingBottom:'3%', paddingTop:'3%',marginTop:'2%'}}> Bonus: {(bonus).toFixed(2)}¢</h2>
          
             <h2 style={{color : 'white', backgroundColor: 'green', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px',marginTop:'75px'}}>
+               paddingBottom:'3%', paddingTop:'3%',marginTop:'8%'}}>
                   Press "Continue" in order to get your bonus</h2>
 
             <Button className="button-container"  variant="outline-primary" size="lg"

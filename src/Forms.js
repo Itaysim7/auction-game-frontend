@@ -45,6 +45,8 @@ function Det(props)
     {
         if(value_age === '' || value_edu === '' || value_gender === ''|| value_nat === '' )
             alert("You need to fill in all the fields")
+        else if(value_age < 18)
+            alert("The minimum age is 18")
         else
         {
             API.filedsParticipant({id: props.match.params.id, age: value_age, gender: value_gender,
@@ -57,7 +59,7 @@ function Det(props)
   return (
     <div>
         <div className='container-forms'>
-            <div className='layout'>
+            <div className='layout-forms'>
                 <h3 style={{marginLeft: '8px'}}>Please fill in a few details before we start</h3>
                 <div className='fill-in'>
                     <h6>Age</h6>

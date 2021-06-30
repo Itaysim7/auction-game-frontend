@@ -22,7 +22,7 @@ function Results(props)
     window.location.href =  `/summary-quiz/${props.id}`;
   }
   const timeout = () => {
-    setTimeout(() => window.location.href = `/`, 17000);
+    setTimeout(() => window.location.href = `/`, 12000);
   }
 
   if(isreview)

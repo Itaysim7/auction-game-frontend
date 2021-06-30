@@ -97,7 +97,7 @@ export class Trainig extends Component
 
     if( !isParticipant)
     {
-      setTimeout(() => window.location.href = `/`, 10000);
+      setTimeout(() => window.location.href = `/`, 12000);
       return (<h1 style={{margin: '20%'}}>You can no longer participate in the experiment, window will close in 5 seconds</h1>)
     }
     return(
@@ -105,7 +105,7 @@ export class Trainig extends Component
         <div className="que-con" >
           <div className="training-header">
               <div className="training-timer">
-                <CountdownCircleTimer isPlaying duration={360} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
+                <CountdownCircleTimer size="150" isPlaying duration={360} colors={[['#006777', 0.33],['#F7B801', 0.33],['#A30000', 0.33],]}>
                 {renderTime}
                 </CountdownCircleTimer>
               </div>
@@ -134,9 +134,11 @@ export class Trainig extends Component
                 { w === 6  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/6bidders.png`} alt="logo" />}
                 { w === 7  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/7bidders.png`} alt="logo" />}
                 { w === 8  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/8bidders.png`} alt="logo" />}
-                <h2 style={{color : 'black'}}>number of bidders= {w}</h2>
+                <h4 style={{color : 'black'}}>number of bidders= {w}</h4>
             </div>
-            <Matrix size={40} x={x} y={y} table={table} />
+            <div className="con-table">            
+              <Matrix size={30} x={x} y={y} table={table} />
+            </div>
             <div className="bidders">
                 <img className="img-info" src={process.env.PUBLIC_URL + '/info.png'} alt="logo" />
                 <h5 style={{color : 'black'}}>true value revealing price− {zv}$</h5>

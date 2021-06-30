@@ -55,52 +55,36 @@ export class GameYes extends Component
     return(
       <div className="color">
         <div className="que-con" >
-          <div className="yes-header" >
-              <div className="bidders"></div>
-              <div>
-                <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
-                <h2 style={{color : 'red'}}>Round {currentIndex+1}-summary</h2>
-                <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px'}}>You decided to buy the true value for {zv}$</h4>
-              </div>
-          </div>
-          <div className="yes-body">
-            <div></div>
-            <div>
-              <div className="world">
-                  <div></div>
-                  <img style={{marginLeft:'80px'}} className="img-training" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
-                  <h1 style={{color : 'red', marginTop: '25px'}}>v{s}</h1>
-              </div>
-              <div className="sold-for">
-                <h1 style={{color : 'red', marginTop:'30px'}}>sold for {parseFloat(soldFor).toFixed(1)}$ !</h1>
+          <div className="temp">
+            <h1 style={{color : 'black'}}>The Mysterious Auction Game</h1>
+            <h2 style={{color : 'red'}}>Round {currentIndex+1}-summary</h2>
+            <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+             paddingBottom:'15px', paddingTop:'15px'}}>You decided to buy the true value for {zv}$</h4>
+            <div className="worldd">
+              <img className="img-trainingg" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
+              <h1 style={{color : 'red', marginTop: '10%'}}>v{s}</h1>
+            </div>    
+            <div className="worldd">
+                <h1 style={{color : 'red'}}>sold for {parseFloat(soldFor).toFixed(1)}$ !</h1>
                 <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
               </div>
-              <div className="avg">
+              <div className="worldd">
                 <img  className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
                 <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
               </div>
-
-
-            </div>
-
-          </div>
-          <div className='yes-foot'>
-
-            <div></div>
-            <div>
               <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
                paddingBottom:'15px', paddingTop:'15px'}}>
                  Prize collected: {Number(soldFor)}-{parseFloat(avg).toFixed(1)}-{zv}=
                  {(Number(soldFor)-parseFloat(avg).toFixed(1)-zv).toFixed(1)}$</h4>
-            </div>
-            <div style={{marginTop: '120px'}}>
-              {currentIndex <= 18 &&<Button width="20px" className="button-container"  variant="outline-primary" size="lg"
-              onClick={this.nextClicked} >Next round</Button>}
-              { currentIndex > 18 && <Button width="20px" className="button-container"  variant="outline-primary" size="lg"
-              onClick={this.endClicked} >End game</Button>}
-            </div>
-          </div>       
+              <div className="buttons-container">
+                {currentIndex <= 18 &&<Button width="20px" className="button-container"  variant="outline-primary" size="lg"
+                onClick={this.nextClicked} >Next round</Button>}
+                { currentIndex > 18 && <Button width="20px" className="button-container"  variant="outline-primary" size="lg"
+                onClick={this.endClicked} >End game</Button>}
+              </div>
+          </div>
+
+      
         </div>
       </div>
 

@@ -24,9 +24,9 @@ function Desc(props)
     return (
 
     <div className="container">
-        <img style={{ marginLeft: '130px'}} className="photo" src={process.env.PUBLIC_URL + `/${page}.png`} alt="logo" />
-        <div style={{marginLeft: '40%', marginTop: '50px'}}>
-            <h6 style={{ marginLeft: '60px', color: 'blue'}}>Introduction progress bar</h6>
+        <img style={{ marginLeft: '15%'}} className="photo" src={process.env.PUBLIC_URL + `/${page}.png`} alt="logo" />
+        <div style={{marginLeft: '30%', marginTop: '50px'}}>
+            <h6 style={{ color: 'blue'}}>Introduction progress bar</h6>
             <ProgressBar labelAlignment="oucetside" height="50%"  labelSize="18px" bgColor="blue" width="50%"  completed={Math.floor(((page-1)/17)*100)} />
         </div>
         <div className="buttons-container">

@@ -56,50 +56,34 @@ export class No extends Component
     return(
       <div className="color">
         <div className="que-con" >
-          <div className="yes-header" >
-              <div className="bidders">
-
-              </div>
-              <div>
-                <h1 style={{color : 'red'}}>Training</h1>
-                <h2 style={{color : 'red'}}>Round {currentIndex+1}-summary</h2>
-                <img  src={process.env.PUBLIC_URL + '/decided-no.png'} alt="logo" />
-              </div>
-          </div>
-          <div className="yes-body">
-            <div></div>
-            <div>
-              <div className="world" style={{marginLeft:'150px'}}>
-                  <img className="img-training" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
-                  <h1 style={{color : 'red', marginTop: '25px'}}>?</h1>
-                  <div></div>
-              </div>
-              <div className="sold-for">
-                <h1 style={{color : 'red', marginTop:'30px'}}>sold for {parseFloat(avg).toFixed(1)}$ !</h1>
-                <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
-              </div>
-              <div className="avg">
-                  <img className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
-                  <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
-              </div>
+          <div className="temp">
+            <h2 style={{color : 'red', marginBottom:'0px'}}>Training</h2>
+            <h3 style={{color : 'red', marginBottom:'0px'}}>Round {currentIndex+1}-summary</h3>
+            <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+               paddingBottom:'1%', paddingTop:'1%'}}>
+                You decided not to buy the true value</h4>
+            <div className="worldd">
+              <img className="img-trainingg" src={process.env.PUBLIC_URL + '/yes.png'} alt="logo" />
+              <h1 style={{color : 'red', marginTop: '25px'}}>?</h1>
             </div>
-
-          </div>
-          <div className='yes-foot'>
-
-            <div></div>
-            <div>
-              <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
-               paddingBottom:'15px', paddingTop:'15px'}}>
+            <div className="worldd">
+              <h1 style={{color : 'red', marginTop:'30px'}}>sold for {parseFloat(avg).toFixed(1)}$ !</h1>
+              <img className="img-dolar" src={process.env.PUBLIC_URL + '/dolar.png'} alt="logo" />
+              </div>
+            <div className="worldd">
+              <img className="img-avg" src={process.env.PUBLIC_URL + '/avg.png'} alt="logo" />
+              <h1 style={{color : 'red'}}>= {parseFloat(avg).toFixed(1)}$</h1>
+            </div>
+            <h4 style={{color : 'white', backgroundColor: '#2d6ad5', border: '2px solid black',
+               paddingBottom:'1%', paddingTop:'1%'}}>
                  Prize collected: {parseFloat(avg).toFixed(1)}-{parseFloat(avg).toFixed(1)}-0=0$</h4>
-            </div>
-          </div>
-          <div className="buttons-container">
+            <div className="buttons-container">
               <Button style={{marginBottom:'25px'}} width="20px" className="next"  variant="outline-primary" size="lg"
               onClick={this.nextClicked} >Next</Button>
               { currentIndex > 0 && <Button width="20px" className="previous"  variant="outline-primary" size="lg"
               onClick={this.endClicked} >End training</Button>
               }
+            </div>
           </div>
         </div>
       </div>

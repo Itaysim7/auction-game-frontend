@@ -1,20 +1,21 @@
 .container-survey{
     display: flex;
     justify-content: space-around;
-    padding-top: 50px;
+    padding-top: 2%;
     margin-bottom: 30px;
 }
-.layout{
+.layout-survey{
     display: flex;
     text-align: left;
-    width: 550px;
+    width: 60%;
     flex-direction: column;
     background: linear-gradient(90deg, rgb(110,94,254)0%, rgba(73,63,252,1)100%);
     border-radius: 20px;
 }
 
 .fill-in{
-    width: 540px;
+    width: 98%;
+    margin-left: 1%;
     background: white;
     align-items: left;
     margin-left: 5px;

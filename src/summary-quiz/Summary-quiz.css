@@ -61,13 +61,13 @@ h1{
 color: black;
 }
 .timer {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background-color: rgb(71, 223, 71);
 }
 .intro-header
 {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 7fr;
     display: grid;
 }

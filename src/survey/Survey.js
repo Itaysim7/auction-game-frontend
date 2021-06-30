@@ -12,6 +12,7 @@ function Survey(props)
     const [q2, setQ2state] = useState('')
     const [q3, setQ3state] = useState('')
     const [q4, setQ4state] = useState('')
+    const [q5, setQ5state] = useState('')
     const[payed, setPayed] = useState(false)
 
     const setQ1 = (event) => {
@@ -26,15 +27,18 @@ function Survey(props)
     const setQ4 = (event) => {
         setQ4state(event.target.value);
     }
+    const setQ5 = (event) => {
+        setQ5state(event.target.value);
+    }
     const submitClicked = () => 
     {
-        if(q1 === '' || q2 === '' || q3 === ''|| q4 === '' )
+        if(q1 === '' || q2 === '' || q3 === ''|| q4 === ''|| q5 === ''  )
         {
             alert("You need to fill in all the fields")
         }
         else
         {
-            API.addSurvey({ id: props.match.params.id, q1: q1, q2: q2, q3: q3, q4: q4 })
+            API.addSurvey({ id: props.match.params.id, q1: q1, q2: q2, q3: q3, q4: q4, q5: q5  })
            .then(resp => console.log(resp))
            .catch(error => console.log(error))
            API.setPayed({ id: props.match.params.id})
@@ -54,7 +58,7 @@ function Survey(props)
         return (
             <div>
                 <div className='container-survey'>
-                    <div className='layout'>
+                    <div className='layout-survey'>
                         <h3 style={{textAlign : 'center'}}>Please answer this short survey</h3>
                         <div className='fill-in'>
                             <div key={SurveyData[0].id}>
@@ -80,6 +84,14 @@ function Survey(props)
                                     <input type="radio" value={SurveyData[2].options[0]} name={SurveyData[2].options[0]} checked={q3 === SurveyData[2].options[0] } onChange={setQ3.bind(this)}/> {SurveyData[2].options[0]}<br/>
                                     <input type="radio" value={SurveyData[2].options[1]} name={SurveyData[2].options[1]} checked={q3 === SurveyData[2].options[1] } onChange={setQ3.bind(this)} /> {SurveyData[2].options[1]}<br/>
                                     <input type="radio" value={SurveyData[2].options[2]} name={SurveyData[2].options[2]} checked={q3 === SurveyData[2].options[2] } onChange={setQ3.bind(this)} /> {SurveyData[2].options[2]}
+                                </div>
+                            </div>
+                            <div key={SurveyData[3].id}>
+                                <h5 style={{color : 'orange', marginBottom : '10px', marginLeft: '10px'}}>{SurveyData[3].question}</h5>
+                                <div className="survey-radio">
+                                    <input type="radio" value={SurveyData[3].options[0]} name={SurveyData[3].options[0]} checked={q5 === SurveyData[3].options[0] } onChange={setQ5.bind(this)}/> {SurveyData[3].options[0]}<br/>
+                                    <input type="radio" value={SurveyData[3].options[1]} name={SurveyData[3].options[1]} checked={q5 === SurveyData[3].options[1] } onChange={setQ5.bind(this)} /> {SurveyData[3].options[1]}<br/>
+                                    <input type="radio" value={SurveyData[3].options[2]} name={SurveyData[3].options[2]} checked={q5 === SurveyData[3].options[2] } onChange={setQ5.bind(this)} /> {SurveyData[3].options[2]}
                                 </div>
                             </div>
         

@@ -13,7 +13,7 @@ function IntroGame(props)
     return (
 
     <div className="container">
-        <img className="photo" src={process.env.PUBLIC_URL + `/game-intro.png`} alt="logo" />
+        <img className="photo" style={{marginLeft:'10%'}}  src={process.env.PUBLIC_URL + `/game-intro.png`} alt="logo" />
         <Button className="button-container"  variant="outline-primary" size="lg"
           onClick={nextClicked} >Next</Button>
       </div>
