@@ -136,9 +136,7 @@ export class Trainig extends Component
                 { w === 8  && <img className="img-bidders" src={process.env.PUBLIC_URL + `/8bidders.png`} alt="logo" />}
                 <h4 style={{color : 'black'}}>number of bidders= {w}</h4>
             </div>
-            <div className="con-table">            
-              <Matrix size={30} x={x} y={y} table={table} />
-            </div>
+            <Matrix size={30} x={x} y={y} table={table} />
             <div className="bidders">
                 <img className="img-info" src={process.env.PUBLIC_URL + '/info.png'} alt="logo" />
                 <h5 style={{color : 'black'}}>true value revealing price− {zv}$</h5>
