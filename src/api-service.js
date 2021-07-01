@@ -3,6 +3,19 @@ const BASE_URL= "https://db-auction-game.herokuapp.com/";
 
 export class API {
 
+    static wakeUp(body)
+    {
+        return fetch(BASE_URL+"api/participant/wake_up/",
+        {
+            method: 'GET',
+            headers: 
+            {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(resp => resp.json())
+    }
+    
     static addParticipant(body)
     {
         return fetch(BASE_URL+"api/participant/add_participant/",

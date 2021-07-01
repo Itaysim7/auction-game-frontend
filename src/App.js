@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {API} from './api-service'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const [worker, setWorkert] = useState('')
+  
+  useEffect(() => {
+    API.wakeUp()
+    .then(resp => console.log(resp))
+    .catch(error => console.log(error))
+  }, []);
   
   const setQ4 = (event) => {
     setWorkert(event.target.value)
