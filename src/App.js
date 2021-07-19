@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <div className="container-intro">
-        <img className="photo" src={process.env.PUBLIC_URL + './1.png'} alt="logo" />
+        <img className="photo" src={process.env.PUBLIC_URL + './0.png'} alt="logo" />
         <div className='layout-intro'>
           <h3 style={{marginLeft: '8px'}}>Please enter your Worker ID to continue</h3>
             <div className='fill-in-intro' >

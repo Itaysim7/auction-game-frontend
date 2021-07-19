@@ -7,7 +7,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 function Desc(props)
 {
-    const [page, setPage] = useState(2);
+    const [page, setPage] = useState(1);
 
     const nextClicked = () => {
         if(page>=18)
@@ -16,7 +16,7 @@ function Desc(props)
             setPage(page+1);
     }
     const previousClicked = () => {
-        if(page>2)
+        if(page>1)
             setPage(page-1);
     }
 
@@ -30,7 +30,7 @@ function Desc(props)
             <ProgressBar labelAlignment="oucetside" height="50%"  labelSize="18px" bgColor="blue" width="50%"  completed={Math.floor(((page-1)/17)*100)} />
         </div>
         <div className="buttons-container">
-            {page>2 && <Button className="previous"  variant="outline-primary" size="lg"
+            {page>1 && <Button className="previous"  variant="outline-primary" size="lg"
                 onClick={previousClicked} >Previous</Button>}
             <Button className="next"  variant="outline-primary" size="lg"
                 onClick={nextClicked} >Next</Button>

@@ -16,7 +16,7 @@ export const SurveyData = [
     },
     {
         id: 2,
-        question: `Are you happy with the bonus?(2$)`,
+        question: `Are you happy with the bonus?`,
         options: [`Not happy at all`,
                   `Somewhat happy`,
                   `Genreally happy`,
